@@ -2,7 +2,11 @@ var numbers = [];
 var toFind = -1;
 
 function setup() {
-  createCanvas(displayWidth, 500);
+  if(displayWidth < 1138){
+    createCanvas(1138,500);
+  }
+  else
+    createCanvas(displayWidth, 500);
   background(255);
 
   input = createInput();
@@ -182,7 +186,7 @@ function drawStuff(arr){
   if(numbers[mid] == toFind)
   {
     fill(0,255,0);
-    text("The number was found at index = " + mid.toString() + ". You can submit again!", width/2 , 400);
+    text("The number was found at " + mid.toString() + "! You can submit again!", width/2 , 400);
     hasFound = true;
   }
   textSize(16);
@@ -195,5 +199,7 @@ function drawStuff(arr){
 function getLength(value) {
   return Math.log(value) * Math.LOG10E + 1 | 0;
 }
-
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
 function draw() {}
