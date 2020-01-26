@@ -21,7 +21,7 @@ function setup() {
 
 
 
-  greeting = createElement('h1', 'Binary sort!');
+  greeting = createElement('h1', 'Binary search');
   greeting.position(18, 5);
 
   intro = createElement('p', 'Please input at least 2 numbers (use as less digits as possible, thanks!).');
@@ -192,6 +192,16 @@ function drawStuff(arr){
     text("You can submit again!", 340 , 135);
     hasFound = true;
   }
+  if(left >= right && hasFound == false){
+    strokeWeight(0);
+    fill(255, 0,0);
+    textSize(16);
+    textAlign(LEFT);
+    text("The number does not exist!",340, 115)
+    text("You can submit again!", 340 , 135);
+    hasFound = true;
+  }
+    
   strokeWeight(0);
   textSize(16);
   fill(100);
