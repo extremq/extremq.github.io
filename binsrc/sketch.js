@@ -87,9 +87,6 @@ function createNumbers(arr) {
     y = 300;
 
     var length = getLength(value);
-    strokeWeight(1);
-    fill(255);
-    rect(x - 10 * length, y - 30, 20 * length, 40);
     strokeWeight(0);
     textAlign(CENTER);
     textFont('Monospace');
@@ -114,7 +111,7 @@ function createNumbers(arr) {
 }
 
 var advBtnCreated = false;
-
+var hasFound = false;
 
 function choose(val) {
   toFind = val;
@@ -125,12 +122,19 @@ function choose(val) {
     btn.class('btn btn-dark');
     btn.mousePressed(advanceStep);
   }
+  if(hasFound == false)
+	advanceStep();
+  else {
+	submit();
+	hasFound = false;
+	advanceStep();
+  }
 }
 
 function advanceStep() {
   drawStuff(numbers)
 }
-var hasFound = false;
+
 
 function drawStuff(arr){
 
@@ -145,17 +149,18 @@ function drawStuff(arr){
     x = i * offset + offset / 2;
     y = 300;
 
-    var length = getLength(value);
-    if(left <= i && i <= right){ 
+    /*if(left <= i && i <= right){ 
       strokeWeight(1);
       fill(255);
       rect(x - 10 * length, y - 30, 20 * length, 40);
-    }
+    }*/
+    var length = getLength(value);
     strokeWeight(0);
     textAlign(CENTER);
     textFont('Monospace');
     textSize(32);
-    fill(0)
+	if(left <= i && i <= right) fill(0)
+	else fill(200);
     text(value, x, y);
     fill(0,0,255);
     if(i == left)
@@ -165,6 +170,11 @@ function drawStuff(arr){
     
     if(i == mid){
       text('↓', x, y - 70);
+	  strokeWeight(2);
+      fill(0,0,0,0);
+	  stroke(0, 0, 255);
+      rect(x - 10 * length, y - 30, 20 * length, 40);
+	  stroke(0);
     }
     
     if (numbers[i] == toFind) {
@@ -192,7 +202,7 @@ function drawStuff(arr){
     text("You can submit again!", 340 , 135);
     hasFound = true;
   }
-  if(left >= right && hasFound == false){
+  if(left > right && hasFound == false){
     strokeWeight(0);
     fill(255, 0,0);
     textSize(16);
