@@ -202,7 +202,7 @@ function drawStuff(arr){
     text("You can submit again!", 340 , 135);
     hasFound = true;
   }
-  if(left > right && hasFound == false){
+  if(left >= right && hasFound == false){
     strokeWeight(0);
     fill(255, 0,0);
     textSize(16);
