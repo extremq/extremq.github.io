@@ -17,7 +17,7 @@ function setup() {
 }
 
 function myInputEvent() {
-  if(this.value() == "1234") {
+  if(this.value() == "vreausaticurglapticingura") {
     myDiv = createDiv('<span class="center" style="font-family: \'Courier New\'">Bine ai revenit, Ștefan!<br><br>În caz de ai uitat, aici păstrezi notițele SUPER secrete pe care le ai despre al tău fizic.<br>Mai jos vei găsi desenul explicativ, multă baftă!<br><br><a href="https://i.imgur.com/GpSZP2r.jpg" target="_blank">Desen.</a></span>');
   }
 }
