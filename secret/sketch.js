@@ -18,7 +18,7 @@ function setup() {
 
 function myInputEvent() {
   if(this.value() == "vreausaticurglapticingura") {
-    myDiv = createDiv('<span class="center" style="font-family: \'Courier New\'">Bine ai revenit, Ștefan!<br><br>În caz de ai uitat, aici păstrezi notițele SUPER secrete pe care le ai despre al tău fizic.<br>Mai jos vei găsi desenul explicativ, multă baftă!<br><br><a href="https://i.imgur.com/qRL7uC5.jpg" target="_blank">Desen.</a></span>');
+    myDiv = createDiv('<span class="center" style="font-family: \'Courier New\'">Bine ai revenit, Ștefan!<br><br>În caz de ai uitat, aici păstrezi notițele SUPER secrete pe care le ai despre al tău fizic.<br>Mai jos vei găsi desenul explicativ, multă baftă!<br><br><a href="https://extremq.github.io/secret/leopold.png" target="_blank">Desen.</a></span>');
   }
 }
 
