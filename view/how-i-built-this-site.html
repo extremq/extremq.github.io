@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>white space</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script>console.log("Yup. I can include post-wide scripts and styling.")</script>
+
+
+</head>
+<nav class="navbar navbar-light bg-transparent">
+    <div class="container-fluid">
+        <a class="navbar-brand mx-auto" href="https://extremq.github.io/">white space</a>
+    </div>
+</nav>
+<body>
+    <div class="card shadow mx-auto mt-2 mb-3" style="width: 600px;">
+        <div class="card-body">
+            <h5 class="card-title">How I built this site</h5>
+            <h6 class="card-subtitle mb-2 text-muted">28 Oct 2021</h6>
+            Hello!
+<br><br>
+This has been a really exciting thing to work on and I'm sure I will put it to use.
+Now, you might be asking why did I create this whole <i>thing</i> in the first place, considering how many other site-building tools are there?
+Well, it's simple:
+<br><br>
+<b>I wanted to learn!</b>
+<br><br>
+It's much more fun to learn and to be able to tweak things however I like.
+I could've built a dynamic website, but github only supports static stuff.
+Believe me, it's exciting to run <kbd>py build.py</kbd> and see all the lines flow down through the console.
+<br><br>
+<b>Let's get to technical stuff, shall we?</b>
+<br>
+Glad you asked.
+<br><br>
+Just so we are on the same line, you can also take a look at the source code <a href="https://github.com/extremq/extremq.github.io" target="_blank">here</a>.
+Moving on, I had <i>three things</i> in mind when planning the structure:
+<br><br>
+<ul class="list-group">
+    <li class="list-group-item">Everything has to be modular.</li>
+    <li class="list-group-item">It should be fast and efficient for creating articles.</li>
+    <li class="list-group-item">Every article must be tweakable up to source code level.</li>
+</ul>
+<br>
+Let's start with the first requirement:
+<br><br>
+<b>Everything has to be modular.</b>
+<br>
+I do not want to be forced to edit whole html files or to update the same piece of code in multiple html files.
+This is time <i>lost</i> that could've went into writing or, really, doing anything else.
+We don't like wasting time here.
+<br>
+What I did in order to achieve that was to basically have two main types of source files: <kbd>templates</kbd> and <kbd>components</kbd><div class=""></div>
+I simply include snippets of html inside these such files and, within the <kbd>build.py</kbd> file, I replace tags with their content (recursion supported!).
+<br><br>
+The tags are formatted like this:
+<br>
+<code>&lt;myFileName/&gt;</code>, where FileName is the component's name, extension removed.
+<br><br>
+<b>It should be fast and efficient for creating articles.</b>
+<br>
+I made it so everytime I want to write a new article, I instantiate a folder with <kbd>body.html</kbd> and <kbd>meta.txt</kbd> in them.
+They are the basic requirements for an article to exist. From there, I am free to build the site to check out how the article looks and whatnot.
+<br>
+I do have some improvements I will eventually implement, one of them being the ability to generate the edited posts instead of the whole deal.
+<br><br>
+<b>Every article must be tweakable up to source code level.</b>
+<br>
+I mean... I basically <i>have</i> to write everything at source code level.
+Every article is typed using basic html and will use javascript or css when needed.
+I like it this way because it lets me do pretty much anything I will want to do.
+<br>
+Want a game? Want graphs? Want tools?
+<br>
+Of course I do!
+<br><br>
+But anyway, it was a pleasure writing my first article here.
+I will return with new things soon.
+<br><br>
+Extremq
+        </div>
+    </div>
+</body>
+    <div class="text-center text-muted mb-3">
+        Site created by Extremq.
+    </div>
+</html>

@@ -40,6 +40,13 @@ class StaticGenerator:
 
         build_name = datetime.utcnow().strftime("%Y-%m-%d--%H-%M-%S")
         os.mkdir(f"{self.root}/output/{build_name}")
+
+        # Latest build is also in /view
+        if os.path.isdir(f"{self.root}/view/"):
+            shutil.rmtree(f"{self.root}/view/")
+
+        os.mkdir(f"{self.root}/view/")
+
         # Posts are like "projects" - they can contain html, css and js files.
         for post in os.listdir("post/"):
 
@@ -60,6 +67,10 @@ class StaticGenerator:
                     objects["css"].append(content)
                 elif obj.find(".js") != -1:
                     objects["js"].append(content)
+                elif obj == "meta.txt" != -1:
+                    metadata = content.splitlines()
+                    objects["title"] = metadata[0]
+                    objects["date"] = metadata[1]
 
             # Replacing all the tags in a somewhat recursive (but not actually) manner.
             output = self.templates["post"].replace("<mycontent/>", objects["html"])
@@ -79,6 +90,10 @@ class StaticGenerator:
                             to_replace += f"<style>{style}</style>\n"
                             
                         output = output.replace(tag, to_replace)
+                    elif stripped_tag == "title":
+                        output = output.replace(tag, objects["title"])
+                    elif stripped_tag == "date":
+                        output = output.replace(tag, objects["date"])
                     else:
                         output = output.replace(tag, self.components[stripped_tag])
 
@@ -88,12 +103,6 @@ class StaticGenerator:
 
             with open(f"{path}/{post}.html", "w") as file:
                 file.write(output)
-            
-            # Latest build is also in /view
-            if os.path.isdir(f"{self.root}/view/"):
-                shutil.rmtree(f"{self.root}/view/")
-
-            os.mkdir(f"{self.root}/view/")
             
             with open(f"{self.root}/view/{post}.html", "w") as file:
 	            file.write(output)

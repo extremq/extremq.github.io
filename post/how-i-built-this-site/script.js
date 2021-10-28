@@ -1,0 +1,1 @@
+console.log("Yup. I can include post-wide scripts and styling.")
