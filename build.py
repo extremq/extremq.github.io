@@ -1,11 +1,13 @@
-import os, re
+import os
+import re
 from datetime import datetime
 import shutil
+
 
 # The main interpreter. It mostly replaces the tags written as <mytag/>
 # with the relevant parts of code. Static website, bla bla bla.
 class StaticGenerator:
-    root = os.getcwd() # Root directory
+    root = os.getcwd()  # Root directory
     components = {}
     templates = {}
 
@@ -27,7 +29,7 @@ class StaticGenerator:
             print(" - " + obj)
             name = os.path.splitext(obj)[0]
             self.templates[name] = open(f"{self.root}/src/templates/{obj}").read()
-        
+
         print("Loaded resources successfully.")
 
     # After loading up the resources, I can compile them progressively.
@@ -58,7 +60,7 @@ class StaticGenerator:
                     objects["css"].append(content)
                 elif obj.find(".js") != -1:
                     objects["js"].append(content)
-            
+
             # Replacing all the tags in a somewhat recursive (but not actually) manner.
             output = self.templates["post"].replace("<mycontent/>", objects["html"])
             while tags := re.findall("<my[a-z]+/>", output):
@@ -85,7 +87,7 @@ class StaticGenerator:
             os.mkdir(path)
 
             with open(f"{path}/{post}.html", "w") as file:
-	            file.write(output)
+                file.write(output)
             
             # Latest build is also in /view
             if os.path.isdir(f"{self.root}/view/"):
@@ -109,11 +111,31 @@ class StaticGenerator:
             for tag in tags:
                 stripped_tag = tag.removeprefix("<my")
                 stripped_tag = stripped_tag.removesuffix("/>")
-                
+
                 if stripped_tag == "script" or stripped_tag == "style":
                     output = output.replace(tag, "")
+                elif stripped_tag == "posts":
+                    post_links = ""
+
+                    # When generating post links, I will need their meta file.
+                    print("Feed:")                    
+                    for post in os.listdir("post/"):
+                        for obj in os.listdir(f"post/{post}/"):
+                            content = open(f"{self.root}/post/{post}/{obj}").read()
+                            if obj == "meta.txt":
+                                print(f" - {post}")
+                                metadata = content.splitlines()
+                                post_links += f'<li class="list-group-item"><a href="/view/{post}.html" class="text-decoration-none">{metadata[0]}</a> <span class="fst-italic text-muted">- on {metadata[1]}</span> </li><br>'
+                                break
+                    
+                    # Remove the last <br> tag.
+                    if post_links != "":
+                        post_links = post_links[:-4]
+                    
+                    output = output.replace(tag, post_links)
                 else:
                     output = output.replace(tag, self.components[stripped_tag])
+        
         # I won't bother with looping through a folder just for one page.
         # I will write html, js and css in the source file.
         if os.path.isfile(f"{self.root}/index.html"):
