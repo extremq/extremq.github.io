@@ -59,6 +59,9 @@ class StaticGenerator:
 
             # Iterate through all the post objects and place them selectively
             for obj in os.listdir(f"post/{post}/"):
+                if obj.find(".html") == -1 and obj.find(".css") == -1 and obj.find(".js") == -1 and obj != "meta.txt":
+                    continue
+
                 content = open(f"{self.root}/post/{post}/{obj}").read()
 
                 if obj.find(".html") != -1:
@@ -67,7 +70,7 @@ class StaticGenerator:
                     objects["css"].append(content)
                 elif obj.find(".js") != -1:
                     objects["js"].append(content)
-                elif obj == "meta.txt" != -1:
+                elif obj == "meta.txt":
                     metadata = content.splitlines()
                     objects["title"] = metadata[0]
                     objects["date"] = metadata[1]
@@ -130,8 +133,8 @@ class StaticGenerator:
                     print("Feed:")                    
                     for post in os.listdir("post/"):
                         for obj in os.listdir(f"post/{post}/"):
-                            content = open(f"{self.root}/post/{post}/{obj}").read()
                             if obj == "meta.txt":
+                                content = open(f"{self.root}/post/{post}/{obj}").read()
                                 print(f" - {post}")
                                 metadata = content.splitlines()
                                 post_links += f'<li class="list-group-item"><a href="/view/{post}.html" class="text-decoration-none">{metadata[0]}</a> <span class="fst-italic text-muted">- on {metadata[1]}</span> </li><br>'

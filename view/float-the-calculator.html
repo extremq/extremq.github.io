@@ -1,0 +1,181 @@
+<html lang="en">
+<head>
+    <link rel="icon" type="image/ico" href="https://extremq.github.io/res/favicon.ico">
+    <meta charset="utf-8">
+    <title>white space</title>
+    
+    <meta name="title" content="white space">
+    <meta name="description" content="white space is Extremq's personal website.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://extremq.github.io/">
+    <meta property="og:title" content="white space">
+    <meta property="og:description" content="white space is Extremq's personal website.">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://extremq.github.io/">
+    <meta property="twitter:title" content="white space">
+    <meta property="twitter:description" content="white space is Extremq's personal website.">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+</head>
+<header>
+    <div class="container" style="max-width: 600px;">
+        <nav class="navbar navbar-light bg-transparent" style="margin:auto">
+            <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
+                <a class="navbar-brand mx-auto" href="https://extremq.github.io/">white space</a>
+            </div>
+        </nav>
+    </div>
+</header>
+<div class="container" style="max-width: 600px; margin:auto">
+    <body>
+        <div class="card shadow mx-auto mt-2 mb-3" style="max-width: 600px;">
+            <div class="card-body">
+                <h5 class="card-title">float – a small calculator done in Python</h5>
+                <h6 class="card-subtitle mb-2 text-muted">3 Nov 2021</h6>
+                Greetings. I hope your day is beautiful.
+Mine surely is.
+<br>
+<br>
+I'm here to tell you about my <i>newest invention yet</i>!
+Oh, you haven't heard about it!?
+Haha, don't worry.
+You will surely use it for the rest of your life.
+<br>
+<i>I promise</i>.
+<br>
+<br>
+...
+<br>
+<br>
+Alright. I'm just kidding.
+After all, I can do whatever I want on this page!
+Well, I can't do illegal stuff, can I? 
+Let me correct it, then – I can <i>almost</i> do whatever I want on my page!
+Sometimes I feel like joking around.
+I hope that isn't a problem, dear reader.
+<br>
+<br>
+Let's get to the point.
+<br>
+<hr>
+<h2>The calculator</h2>
+Meet <a href="https://github.com/extremq/float" target="_blank">float</a> – a really specific calculator made using Python.
+<br>
+What does it do?
+Eh. That wasn't my point of interest when creating this tool, really. Let me explain.
+<br>
+<br>
+To begin with, I am in the first year of university. 
+For me, that means <b>physics</b> (notice the boldness – the reader should assume it's important).
+Well, every week we interpret experimental data and need to calculate two specific things: <b>error</b> and <b>linear regression</b>.
+<br>
+We were given a tool for that. It doesn't need to be fancy; after all, it should be able to do two simple tasks.
+<br>
+<br>
+I was thinking that... until I noticed some issues.
+<br>
+<br>
+Imagine if I were to ask you:
+<br>
+<br>
+<figure>
+    <blockquote class="blockquote">
+      <p>Hey, what's the average of 0.45 and 0.55?</p>
+    </blockquote>
+    <figcaption class="blockquote-footer">
+      me, 2021
+    </figcaption>
+</figure>
+You would plop your trusty calculator and recite:
+<br>
+<br>
+<figure>
+    <blockquote class="blockquote">
+      <p>Oh, it's 50, of course!</p>
+    </blockquote>
+    <figcaption class="blockquote-footer">
+      you, 2021
+    </figcaption>
+</figure>
+<i>What?</i>
+<br>
+<br>
+Yeah. It couldn't correctly compute numbers under 1.
+<img src="https://i.imgur.com/ILoyh26.jpg" class="rounded mx-auto d-block p-2">
+And I do mean the statement above fully – negative numbers weren't allowed, either. 
+God forbid you aren't positive in our university! (good joke, mate! you're a <i>natural</i>)
+<br>
+<br>
+Jokes aside, it had some other minor flaws, such as not being able to keep your values if you dared to add one more entry, or having an unintuitive entry selector.
+<br>
+I couldn't let my people down. 
+I couldn't watch them suffer any longer.
+With newfound inspiration, some tkinter docs and some lo-fi <i>maths course</i> beats to code to (sorry, professor), float was born.
+The miracle of life, everybody. 
+<br>
+<br>
+So, my app is split into 3 main frames.
+<img src="https://i.imgur.com/Ade7rCd.png" class="rounded mx-auto d-block p-2">
+<ul class="list-group">
+    <li class="list-group-item">
+        <b>The buttons.</b>
+        <br>
+        It's straightforward, really. It's a frame consisting of two buttons.
+        <script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fextremq%2Ffloat%2Fblob%2F420af8dbc2c1ffe2e92c6953d5ff1e0b9ae147c2%2Fsrc%2Fwindow_class.py%23L70-L87&style=vs&showFileMeta=on"></script>
+    </li>
+    <li class="list-group-item">
+        <b>The tool.</b>
+        <br>
+        Entries work differently based on tool. I had to create two separate methods to work around with that.
+        This here creates the buttons you see at the top.
+        <br>
+        <script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fextremq%2Ffloat%2Fblob%2F420af8dbc2c1ffe2e92c6953d5ff1e0b9ae147c2%2Fsrc%2Fwindow_class.py%23L118-L149&style=vs&showFileMeta=on"></script>
+    </li>
+    <li class="list-group-item">
+        <b>The credits.</b>
+        <br>
+        How could I not give myself a pat on the back?
+        Great job, Extremq.
+        <br>
+        <script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fextremq%2Ffloat%2Fblob%2F420af8dbc2c1ffe2e92c6953d5ff1e0b9ae147c2%2Fsrc%2Fwindow_class.py%23L90-L105&style=vs&showFileMeta=on"></script>
+    </li>
+</ul>
+<br>
+Moving on.
+<br>
+<br>
+These are the generated entries. In this example, I wanted to input 100 values, but I didn't actually input 100 values. Sorry for lying.
+<img src="https://i.imgur.com/v6LmuWp.png" class="rounded mx-auto d-block p-2">
+This one's a little bit taller. It knows whether I need to add or just to destroy entries and it also fills them with the cached values.
+I bet you don't want to switch tools and lose your numbers. :(
+<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fextremq%2Ffloat%2Fblob%2F420af8dbc2c1ffe2e92c6953d5ff1e0b9ae147c2%2Fsrc%2Fwindow_class.py%23L151-L193&style=vs&showFileMeta=on"></script>
+All in all, I consider these to be the most important things to write about for now.
+If you want to check it through, you're free to do it.
+<br>
+<br>
+I strongly recommend trying to come with better solutions everytime you have the power and time to do it.
+This is how our world moves on and evolves. 
+It's been a pleasure. 
+Continue having a beautiful day, dear reader.
+<br>
+<br>
+Extremq
+            </div>
+        </div>
+    </body>
+</div>
+    <footer>
+        <div class="card bg-transparent border-0 text-muted mb-3" style="max-width: 600px;margin:auto">
+            <div class="card-body text-center">
+                Site created by Extremq.
+            </div> 
+        </div>
+    </footer>
+</html>
