@@ -1,0 +1,155 @@
+<html lang="en">
+<head>
+    <link rel="icon" type="image/ico" href="https://extremq.github.io/res/favicon.ico">
+    <meta charset="utf-8">
+    <title>white space</title>
+    
+    <meta name="title" content="white space">
+    <meta name="description" content="white space is Extremq's personal website.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://extremq.github.io/">
+    <meta property="og:title" content="white space">
+    <meta property="og:description" content="white space is Extremq's personal website.">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://extremq.github.io/">
+    <meta property="twitter:title" content="white space">
+    <meta property="twitter:description" content="white space is Extremq's personal website.">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+</head>
+<header>
+    <div class="container" style="max-width: 600px;">
+        <nav class="navbar navbar-light bg-transparent" style="margin:auto">
+            <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
+                <a class="navbar-brand mx-auto" href="https://extremq.github.io/">white space</a>
+            </div>
+        </nav>
+    </div>
+</header>
+<div class="container" style="max-width: 600px; margin:auto">
+    <body>
+        <div class="card shadow mx-auto mt-2 mb-3" style="max-width: 600px;">
+            <div class="card-body">
+                <h5 class="card-title">Divisors always come in pairs</h5>
+                <h6 class="card-subtitle mb-2 text-muted">7 Nov 2021</h6>
+                <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+Good day, reader!
+<br>
+Take a seat. We're talking about divisors.
+<br>
+<br>
+<b>Divisors</b> are an important concept when it comes to number theory. 
+They show up a lot when dealing with prime numbers, modulo exponentiation (expect an article about this) and whatever other quirky math algorithms.
+<br>
+<br>
+Some people aren't familiar with a basic <i>yet essential</i> feature about divisors.
+Believe me, it also costs a lot of time if you don't know about this, but:
+<br>
+<br>
+<b>Divisors always show up in pairs.</b>
+<br>
+This means a few things:
+<br>
+<br>
+1. All natural numbers have an even amount of divisors, except for perfect squares (we will see why).
+<br>
+2. You do not need to cross \(\sqrt{n}\) if you want to retrieve all of \(n\)'s divisors.
+<br>
+3. You can check if a number is prime without needing to cross \(\sqrt{n}\) (consequence of 2).
+<br>
+<br>
+Let's see why these things hold up.
+<br>
+<br>
+Consider the number \(n = 24\). Its divisors are \(1, 2, 3, 4, 6, 8, 12, 24\).
+<br>
+Thing is, if we look closer, we can see a pattern:
+<br>
+<br>
+\(1 = 24/24\).
+<br>
+\(2 = 24/12\).
+<br>
+\(3 = 24/8\).
+<br>
+\(4 = 24/6\).
+<br>
+\(6 = 24/4\).
+<br>
+\(8 = 24/3\).
+<br>
+\(12 = 24/2\).
+<br>
+and,
+<br>
+\(24 = 24/1\). 
+<br>
+<br>
+But, wait – the clever reader hastily remarks – aren't we repeating ourselves? 
+Isn't the first half <i>practically equivalent</i> to the second half?
+<br>
+<br>
+Indeed it is!
+<br>
+Every divisor \(d\) of \(n\) always has an inverse divisor \(d' = n/d\).
+So, as you've seen, when we discover that \(3\) is the divisor of \(24\), we can automatically imply that \(24/3 = 8\) is also a divisor of 24, and it is!
+<br>
+<br>
+When it comes to perfect squares, such as \(9\), we need to make sure we don't count the root twice.
+<br>
+The divisors of \(9\) are \(1, 3, 9\). 
+Using the logic mentioned earlier, we can find \(9\) by dividing by \(1\), but when we get to \(3\) do have some <kbd>if</kbd> clause so you dont add both \(3\) and \(9/3\) as divisors.
+<br>
+<br>
+I do want to think it is obvious now why perfect squares have an odd number of divisors – it's because the root will always be its own pair, thus being the \(1\) in the \(2k + 1\).
+<br>
+<br>
+But why do I not need to cross \(\sqrt{n}\) to know all divisors of \(n\)?
+<br>
+<br>
+Consider the divisor \(d\) of \(n\). 
+We will assume that \(d < \sqrt{n}\). 
+That is analogous to \(\frac{n}{d} > \sqrt{n}\).
+<br>
+And if we assume that \(d > \sqrt{n}\), we get that \(\frac{n}{d} < \sqrt{n}\).
+<br>
+<br>
+This means that each pair of divisors will always have a term smaller than the root of \(n\) and one larger.
+<br>
+Using this, we can simply determine the first half of diviors, smaller than the root, and we're done.
+<br>
+<br>
+Why is this important?
+<br>
+If we were to compute the divisors of all numbers up to one million, believe me you want to use this property.
+The time complexity gets reduced from \(O(n)\) to \(O(\sqrt{n})\). 
+It's a big improvement.
+<br>
+<br>
+Lastly, check this proof of concept implemented in C++.
+<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fextremq%2Falgorithms%2Fblob%2F2b949d456d8b5741b04ffa8e41585f08f6a727cb%2Fdivisors.cpp%23L5-L29&style=vs&showFileMeta=on"></script>
+As always, have a wonderful day, reader.
+<br>
+<br>
+Extremq
+            </div>
+        </div>
+    </body>
+</div>
+    <footer>
+        <div class="card bg-transparent border-0 text-muted mb-3" style="max-width: 600px;margin:auto">
+            <div class="card-body text-center">
+                Site created by Extremq.
+            </div> 
+        </div>
+    </footer>
+</html>
