@@ -1,7 +1,8 @@
 import os
 import re
-from datetime import datetime
 import shutil
+import argparse
+from datetime import datetime
 
 
 # The main interpreter. It mostly replaces the tags written as <mytag/>
@@ -10,6 +11,14 @@ class StaticGenerator:
     root = os.getcwd()  # Root directory
     components = {}
     templates = {}
+    args = {}
+
+    def __init__(self):
+        parser = argparse.ArgumentParser()
+        parser.add_argument("-f", "--file", dest="file", default="all", help="Files to be generated")
+
+        self.args = parser.parse_args()
+        print(self.args.file)
 
     def run(self):
         self.load_resources()
@@ -38,9 +47,6 @@ class StaticGenerator:
     def build_posts(self):
         print("Beginning to process the posts!")
 
-        build_name = datetime.utcnow().strftime("%Y-%m-%d--%H-%M-%S")
-        os.mkdir(f"{self.root}/output/{build_name}")
-
         # Latest build is also in /view
         if os.path.isdir(f"{self.root}/view/"):
             shutil.rmtree(f"{self.root}/view/")
@@ -49,6 +55,11 @@ class StaticGenerator:
 
         # Posts are like "projects" - they can contain html, css and js files.
         for post in os.listdir("post/"):
+
+            # If we specify a file using the -f flag, we will skip other posts
+            if self.args.file != 'all' and self.args.file != post:
+                print(f" - '{post}' skipped.")
+                continue
 
             # Only one html allowed. Multiple css and js files can be imported.
             objects = {
@@ -99,13 +110,6 @@ class StaticGenerator:
                         output = output.replace(tag, objects["date"])
                     else:
                         output = output.replace(tag, self.components[stripped_tag])
-
-            # I store past builds
-            path = f"{self.root}/output/{build_name}/{post}"
-            os.mkdir(path)
-
-            with open(f"{path}/{post}.html", "w") as file:
-                file.write(output)
             
             with open(f"{self.root}/view/{post}.html", "w") as file:
 	            file.write(output)
