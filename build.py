@@ -141,7 +141,7 @@ class StaticGenerator:
                                 content = open(f"{self.root}/post/{post}/{obj}").read()
                                 print(f" - {post}")
                                 metadata = content.splitlines()
-                                post_links += f'<li class="list-group-item"><a href="/view/{post}.html" class="text-decoration-none">{metadata[0]}</a> <span class="fst-italic text-muted">- on {metadata[1]}</span> </li><br>'
+                                post_links += f'<p><a href="/view/{post}.html" class="text-decoration-none fs-5">{metadata[0]}</a> <span class="fs-6 text-muted">- on {metadata[1]}</span></p>'
                                 break
                     
                     # Remove the last <br> tag.
