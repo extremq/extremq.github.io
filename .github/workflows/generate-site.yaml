@@ -29,4 +29,4 @@ jobs:
       - name: commit changed files
         run: git commit -m "Auto update views."
       - name: push code to master
-        run: git push
+        run: git push origin HEAD:dev
