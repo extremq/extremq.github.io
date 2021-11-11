@@ -150,7 +150,7 @@ class StaticGenerator:
                 if stripped_tag == "script" or stripped_tag == "style":
                     output = output.replace(html_tag, "")
                 elif stripped_tag == "posts":
-                    post_links = ""
+                    post_links = {}
 
                     # When generating post links, I will need their meta file.
                     print("Feed:")                    
@@ -160,14 +160,16 @@ class StaticGenerator:
                                 content = open(f"{self.root}/post/{post}/{obj}").read()
                                 print(f" - {post}")
                                 metadata = content.splitlines()
-                                post_links += f'<p><a href="/view/{post}.html" class="fs-5 text-dark">{metadata[0]}</a> <span class="fs-6 text-muted">- on {metadata[1]}</span></p>'
+                                post_links[int(metadata[2])] = f'<p><a href="/view/{post}.html" class="fs-5 text-dark">{metadata[0]}</a> <span class="fs-6 text-muted">- on {metadata[1]}</span></p>'
                                 break
                     
-                    # Remove the last <br> tag.
-                    if post_links != "":
-                        post_links = post_links[:-4]
+                    ordered_post_links = dict(sorted(post_links.items(), reverse=True))
+                    posts_html = ""
                     
-                    output = output.replace(html_tag, post_links)
+                    for timestamp, content in ordered_post_links.items():
+                        posts_html += content
+                    
+                    output = output.replace(html_tag, posts_html)
                 else:
                     component_content = self.components[stripped_tag]
                     i = 1

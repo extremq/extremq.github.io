@@ -9,5 +9,6 @@ In the `.html` you should write your article and inside the `meta.txt` you will 
 ```
 Title of article
 Date of article
+UTC Timestamp of article in seconds
 ```
 Then, after you're done with that, you can choose to render only that page or all the pages by using `python ./build.py --file name-of-folder` or `python ./build.py --f name-of-folder`. Providing no flags will generate all the pages instead.
