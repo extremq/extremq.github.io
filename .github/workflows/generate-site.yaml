@@ -1,7 +1,7 @@
 name: generate-site
 on: 
   pull_request:
-    branches: [main]
+    branches: [master]
 jobs:
   build:
     runs-on: ubuntu-latest

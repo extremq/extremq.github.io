@@ -11,4 +11,4 @@ Title of article
 Date of article
 UTC Timestamp of article in seconds
 ```
-After you're done with that, you can choose to render only that page or all the pages by using `python ./build.py --file name-of-folder` or `python ./build.py --f name-of-folder`. Providing no flags will generate all the pages instead.
+After you're done with that, you can choose to render only that page or all the pages by using `python ./build.py --file name-of-folder` or `python ./build.py --f name-of-folder`. Providing no flags will generate all the pages instead. 
