@@ -18,7 +18,6 @@ class StaticGenerator:
         parser.add_argument("-f", "--file", dest="file", default="all", help="Files to be generated")
 
         self.args = parser.parse_args()
-        print(self.args.file)
 
     def run(self):
         self.load_resources()
@@ -88,28 +87,41 @@ class StaticGenerator:
 
             # Replacing all the tags in a somewhat recursive (but not actually) manner.
             output = self.templates["post"].replace("<mycontent/>", objects["html"])
-            while tags := re.findall("<my[a-z]+/>", output):
+            while tags := re.findall("<my([a-z]+)(\(.+\))?\/>", output):
                 for tag in tags:
-                    stripped_tag = tag.removeprefix("<my")
-                    stripped_tag = stripped_tag.removesuffix("/>")
+                    html_tag = "<my" + tag[0] + tag[1] + "/>"
+                    stripped_tag = tag[0]
+
+                    arguments = tag[1].removeprefix("(")
+                    arguments = arguments.removesuffix(")")
+
+                    if arguments:
+                        arguments = arguments.split("|")
+
                     if stripped_tag == "script":
                         to_replace = ""
                         for script in objects["js"]:
                             to_replace += f"<script>{script}</script>\n"
                             
-                        output = output.replace(tag, to_replace)
+                        output = output.replace(html_tag, to_replace)
                     elif stripped_tag == "style":
                         to_replace = ""
                         for style in objects["css"]:
                             to_replace += f"<style>{style}</style>\n"
                             
-                        output = output.replace(tag, to_replace)
+                        output = output.replace(html_tag, to_replace)
                     elif stripped_tag == "title":
-                        output = output.replace(tag, objects["title"])
+                        output = output.replace(html_tag, objects["title"])
                     elif stripped_tag == "date":
-                        output = output.replace(tag, objects["date"])
+                        output = output.replace(html_tag, objects["date"])
                     else:
-                        output = output.replace(tag, self.components[stripped_tag])
+                        component_content = self.components[stripped_tag]
+                        i = 1
+                        for arg in arguments:
+                            component_content = component_content.replace(f"${i}$", arg)
+                            i += 1
+                        
+                        output = output.replace(html_tag, component_content)
             
             with open(f"{self.root}/view/{post}.html", "w") as file:
 	            file.write(output)
@@ -123,13 +135,20 @@ class StaticGenerator:
         print("Building home page.")
 
         output = self.templates["home"]
-        while tags := re.findall("<my[a-z]+/>", output):
+        while tags := re.findall("<my([a-z]+)(\(.+\))?\/>", output):
             for tag in tags:
-                stripped_tag = tag.removeprefix("<my")
-                stripped_tag = stripped_tag.removesuffix("/>")
+                html_tag = "<my" + tag[0] + tag[1] + "/>"
+
+                stripped_tag = tag[0]
+
+                arguments = tag[1].removeprefix("(")
+                arguments = arguments.removesuffix(")")
+
+                if arguments:
+                    arguments = arguments.split("|")
 
                 if stripped_tag == "script" or stripped_tag == "style":
-                    output = output.replace(tag, "")
+                    output = output.replace(html_tag, "")
                 elif stripped_tag == "posts":
                     post_links = ""
 
@@ -148,9 +167,15 @@ class StaticGenerator:
                     if post_links != "":
                         post_links = post_links[:-4]
                     
-                    output = output.replace(tag, post_links)
+                    output = output.replace(html_tag, post_links)
                 else:
-                    output = output.replace(tag, self.components[stripped_tag])
+                    component_content = self.components[stripped_tag]
+                    i = 1
+                    for arg in arguments:
+                        component_content = component_content.replace(f"${i}$", arg)
+                        i += 1
+                    
+                    output = output.replace(html_tag, component_content)
         
         # I won't bother with looping through a folder just for one page.
         # I will write html, js and css in the source file.

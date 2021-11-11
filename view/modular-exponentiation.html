@@ -1,0 +1,186 @@
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>extremq</title>
+     
+    <meta name="title" content="extremq">
+    <meta name="description" content="Extremq's personal website.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://extremq.github.io/">
+    <meta property="og:title" content="extremq">
+    <meta property="og:description" content="Extremq's personal website.">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://extremq.github.io/">
+    <meta property="twitter:title" content="extremq">
+    <meta property="twitter:description" content="Extremq's personal website.">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+</head>
+    <body class="d-block mx-auto" style="max-width: 1600px;">
+        <div class="col-lg-8 mx-auto p-3 py-md-5">
+            <header class="d-flex align-items-center pb-3 mb-5 border-bottom" style="border-color: #C7C8C9 !important;">
+    <a class="d-flex align-items-center text-decoration-none fs-4 text-dark" href="https://extremq.github.io/">
+        <img height="40px" src="https://i.imgur.com/phfSEEE.png">
+    </a>
+</header>
+
+            <main>
+                <h1 class="mb-3">On calculating the modulo of exponentiated integers</h1>
+                <h5 class="card-subtitle mb-4 text-muted">11 Nov 2021</h5>
+                <div class="fs-5">
+                    Hi there.
+<br>
+<br>
+I heard you wanted to calculate the last digit of \(n = 123456789^{123456789}\). 
+<br>
+Woah. 
+That's a <b>big</b> number.
+<br>
+<br>
+Well then, go ahead and compute all of its \(998952458\) digits. 
+The digit you're searching is at the end of the list. 
+<br>
+Except you're going to get old doing that. 
+I don't want you to lose your youth calculating the last digit of \(n\).
+<br>
+There are other things in life that need your attention, such as <a href="https://www.google.com/search?q=cat" class="text-dark" target="_blank">cats</a>.
+<br>
+<br>
+Let's look at a rather obscure but interestingly useful property of integers.
+<br>
+<br>
+By asking what the last digit of \(n\) actually means trying to compute \(n \text{ mod } 10\).
+<br>
+Before I show you the formula, I need to talk a bit about <a href="https://en.wikipedia.org/wiki/Euler%27s_totient_function" class="text-dark" target="_blank">Euler's totient function</a>.
+<br>
+<br>
+Euler's totient function is denoted with \(\varphi(n)\) and it counts the positive integers up to \(n\) that are relatively prime to \(n\).
+<br>
+For example,
+$$
+\begin{equation}
+    \varphi(9) = 6
+\end{equation}
+$$
+because
+$$
+\begin{equation}
+    1, 2, 4, 5, 7 \text{ and } 8
+\end{equation}
+$$
+do not share any common divisor with \(9\) except for \(1\).
+<br>
+<br>
+Or, in mathematical terms, \(\text{gcd}(a, 9) = 1\), where \(a \in \{1, 2, 4, 5, 7, 8\}\).
+<br>
+<br>
+Other examples are \(\varphi(13) = 12\) and \(\varphi(12) = 4\), just so you get the hang of it – and yes, the totient function of a prime number \(p\) returns \(p-1\).
+<br>
+<br>
+Now that you know what this function is for, let's check out the formula that will be used to aid with our hardships.
+<br>
+Drum roll, please.
+$$
+\begin{equation}
+    a^b \equiv a^{b \text{ mod } \varphi(c)} \text { mod } c
+\end{equation}
+$$
+If it looks complicated, don't worry. 
+What this notation actually implies is the following:
+<br>
+$$
+\begin{equation}
+    a^b \text{ mod } c = a^{b \text{ mod } \varphi(c)} \text { mod } c
+\end{equation}
+$$
+I'll just show an example.
+<br>
+We know that \(3^7 = 2187\). That means its last digit is \(7\), so \(3^7 \text{ mod } 10 = 7\).
+<br>
+However, using our formula, we can write it as such:
+$$
+\begin{equation}
+    3^7 \text{ mod } 10 = 3^{7 \text{ mod } \varphi(10)} \text { mod } 10
+\end{equation}
+$$
+and that is equivalent to
+$$
+\begin{align}
+    2187 \text{ mod } 10 &= 3^{7 \text{ mod } 4} \text { mod } 10 \\
+    &= 3^3 \text { mod } 10 \\ 
+    &= 27 \text { mod } 10 \\
+    &= 7
+
+\end{align}
+$$
+That is true.
+<br>
+<br>
+Alright. Feeling the surge of knowledge pouring down your veiny skull?
+<br>
+I sure do. Let's compute the last digit of \(n=123456789^{123456789}\), once and for all.
+<br>
+<br>
+To begin with, \(\varphi(10) = 4\). Using this, \(123456789 \text{ mod } \varphi(10)\) is simply \(123456789 \text{ mod } 4 = 1\).
+<br>
+Now, it's trivial – we computed the modified exponent and it resulted to it being \(1\).
+<br>
+That means:
+$$
+\begin{align}
+    123456789^{123456789} \text{ mod } 10 &= 123456789^1 \text { mod } 10 \\
+    &= 123456789 \text{ mod } 10 \\
+    &= 9
+\end{align}
+$$
+Who would've guessed?!
+<br>
+You can verify my answer with <a href="https://www.wolframalpha.com/input/?i=123456789%5E123456789" class="text-dark" target="_blank">Wolfram</a>.
+<br>
+<br>
+Before I end it here, I'm going to leave a link to an useful <a href="https://math.stackexchange.com/a/81240" class="text-dark" target="_blank">stackexchange</a> answer on this topic.
+However, I'm going to mention that I legitimately haven't seen why \(a\) and \(c\) must be coprime, or \(\text{gcd}(a, c) \neq 1\).
+They don't mention <b>why</b>, unfortunately. 
+Why am I saying this?
+Well, check the first example I gave you.
+There, \(a=3\) and \(c=10\). Interestingly, \(\text{gcd}(3, 10) = 1\).
+It works.
+I won't stop there, though.
+<br>
+<br>
+I've written a python script which computes \(a^b \text{ mod } c\) in both ways and checks if they both return the same value.
+Well, I've tested \(a\) and \(c\) as both relatively prime numbers but also as coprimes (in many forms, believe me).
+\(b\), the exponent, went from \(1\) to \(10000\) and it never found a wrong answer.
+<br>
+<br>
+I've even tried ranging \(b\) from \(1\) to \(100000\) (and it took a minute to compute), and this is the output.
+<pre><code>a = 3
+c = 7
+b start = 1
+b finish = 100000
+Correct answers: 99999
+Wrong answers: 0
+</code></pre>
+I'm curious to know why it wouldn't work.
+Really, submit any pair of relatively prime numbers and, if you get a wrong answer, send me an issue on <a href="https://github.com/extremq/extremq.github.io/issues/new/choose" class="text-dark" target="_blank">GitHub</a>.
+                </div>
+                <hr class="col-3 col-md-2 mb-5">
+            </main>
+            <footer class="text-muted">
+    <p>
+        Site created by Extremq.
+    </p>
+</footer>
+        </div>
+    </body>
+<html>
