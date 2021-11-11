@@ -18,6 +18,7 @@ jobs:
       - name: execute py script # run the run.py to get the latest data
         run: |
           python build.py
+      - run: git checkout dev
       - name: check for changes
         run: git status
       - name: stage changed files
