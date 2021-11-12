@@ -2,7 +2,7 @@ import os
 import re
 import shutil
 import argparse
-from datetime import datetime
+from datetime import datetime, date
 
 
 # The main interpreter. It mostly replaces the tags written as <mytag/>
