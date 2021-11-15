@@ -2,7 +2,8 @@ import os
 import re
 import shutil
 import argparse
-from datetime import datetime, date
+import time
+from dotenv import load_dotenv, set_key, find_dotenv
 
 
 # The main interpreter. It mostly replaces the tags written as <mytag/>
@@ -12,6 +13,7 @@ class StaticGenerator:
     components = {}
     templates = {}
     args = {}
+    env = {}
 
     def __init__(self):
         parser = argparse.ArgumentParser()
@@ -20,9 +22,32 @@ class StaticGenerator:
         self.args = parser.parse_args()
 
     def run(self):
+        self.load_env()
         self.load_resources()
         self.build_posts()
         self.build_home()
+
+    def load_env(self):
+        print("Loading up environment variables:")
+        dotenv_file = find_dotenv()
+        load_dotenv(dotenv_file)
+
+        os.environ["DATE"] = time.strftime("%B %d, %Y at %H:%M")
+        set_key(dotenv_file, "DATE", os.environ["DATE"])
+
+    def replace_global_vars(self, content):
+        variables = re.findall("__[^_]+__", content)
+
+        for var in variables:
+            # We do not use __ in our .env file.
+            if os.getenv(var[2:-2]):
+                content = content.replace(var, os.getenv(var[2:-2]))
+                print(var, os.getenv(var[2:-2]))
+            else:
+                print(f"{var[2:-2]} not found in .env file.")
+                exit()
+        
+        return content
 
     # I load the resources by creating dictionaries with html content inside.
     def load_resources(self):
@@ -30,13 +55,15 @@ class StaticGenerator:
         for obj in os.listdir("src/components"):
             print(" - " + obj)
             name = os.path.splitext(obj)[0]
-            self.components[name] = open(f"{self.root}/src/components/{obj}").read()
+            content = open(f"{self.root}/src/components/{obj}").read()
+            self.components[name] = self.replace_global_vars(content)
 
         print("Loading up templates:")
         for obj in os.listdir("src/templates"):
             print(" - " + obj)
             name = os.path.splitext(obj)[0]
-            self.templates[name] = open(f"{self.root}/src/templates/{obj}").read()
+            content = open(f"{self.root}/src/templates/{obj}").read()
+            self.templates[name] = self.replace_global_vars(content)
 
         print("Loaded resources successfully.")
 
@@ -87,7 +114,8 @@ class StaticGenerator:
 
             # Replacing all the tags in a somewhat recursive (but not actually) manner.
             output = self.templates["post"].replace("<mycontent/>", objects["html"])
-            while tags := re.findall("<my([a-z]+)(\(.+\))?\/>", output):
+            output = self.replace_global_vars(output)
+            while tags := re.findall("<my([a-z]+)(\([^>]+\))?\/>", output):
                 for tag in tags:
                     html_tag = "<my" + tag[0] + tag[1] + "/>"
                     stripped_tag = tag[0]
@@ -115,6 +143,7 @@ class StaticGenerator:
                     elif stripped_tag == "date":
                         output = output.replace(html_tag, objects["date"])
                     else:
+                        # Replace arguments
                         component_content = self.components[stripped_tag]
                         i = 1
                         for arg in arguments:
@@ -135,10 +164,10 @@ class StaticGenerator:
         print("Building home page.")
 
         output = self.templates["home"]
-        while tags := re.findall("<my([a-z]+)(\(.+\))?\/>", output):
+        output = self.replace_global_vars(output)
+        while tags := re.findall("<my([a-z]+)(\([^>]+\))?\/>", output):
             for tag in tags:
                 html_tag = "<my" + tag[0] + tag[1] + "/>"
-
                 stripped_tag = tag[0]
 
                 arguments = tag[1].removeprefix("(")
@@ -172,6 +201,8 @@ class StaticGenerator:
                     output = output.replace(html_tag, posts_html)
                 else:
                     component_content = self.components[stripped_tag]
+
+                    # Replace arguments.
                     i = 1
                     for arg in arguments:
                         component_content = component_content.replace(f"${i}$", arg)
