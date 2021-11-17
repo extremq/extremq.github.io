@@ -42,7 +42,6 @@ class StaticGenerator:
             # We do not use __ in our .env file.
             if os.getenv(var[2:-2]):
                 content = content.replace(var, os.getenv(var[2:-2]))
-                print(var, os.getenv(var[2:-2]))
             else:
                 print(f"{var[2:-2]} not found in .env file.")
                 exit()
@@ -111,6 +110,7 @@ class StaticGenerator:
                     metadata = content.splitlines()
                     objects["title"] = metadata[0]
                     objects["date"] = metadata[1]
+                    objects["description"] = metadata[3]
 
             # Replacing all the tags in a somewhat recursive (but not actually) manner.
             output = self.templates["post"].replace("<mycontent/>", objects["html"])
@@ -138,6 +138,12 @@ class StaticGenerator:
                             to_replace += f"<style>{style}</style>\n"
                             
                         output = output.replace(html_tag, to_replace)
+                    elif stripped_tag == "head":
+                        output = output.replace(html_tag, self.components["posthead"])
+                    elif stripped_tag == "postdesc":
+                        output = output.replace(html_tag, objects["description"])
+                    elif stripped_tag == "postlink":
+                        output = output.replace(html_tag, os.getenv("DOMAIN") + f"/view/{post}.html")
                     elif stripped_tag == "title":
                         output = output.replace(html_tag, objects["title"])
                     elif stripped_tag == "date":

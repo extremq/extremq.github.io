@@ -12,6 +12,7 @@ In the `.html` you should write your article and inside the `meta.txt` you will 
 Title of article
 Date of article
 UTC Timestamp of article in seconds
+Description for embeds
 ```
 To use components, you must first create a file inside the `components/` folder and then, inside your templates (or even other component files) you will need to type
 ```
