@@ -1,5 +1,7 @@
 <html lang="en">
     <style>
+    html { visibility:hidden; }
+    
     body {
         background-color: #fff;
     }
@@ -177,7 +179,7 @@ Extremq
             </main>
             <footer class="text-muted">
     <p>
-        Site created by Extremq, generated on November 22, 2021 at 08:59.
+        Site created by Extremq, generated on November 22, 2021 at 11:06.
     </p>
 </footer>
         </div>
@@ -211,9 +213,9 @@ Extremq
             setCookie("theme", "dark", 7)
         }
     });
-    
+
     function toDarkMode() {
-            console.log("mata")
+        console.log("mata")
         $("body").addClass("dark");
 
         $("#extremq").removeClass("cls-1")
@@ -261,6 +263,10 @@ Extremq
     function eraseCookie(name) {
         document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     }
+
+    $(document).ready(function () {
+        document.getElementsByTagName("html")[0].style.visibility = "visible";
+    });
 
 </script>
 <html>
