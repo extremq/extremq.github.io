@@ -1,21 +1,56 @@
 <style>
     body {
-        background-color: #fff !important;
+        background-color: #fff;
     }
+
+    hr {
+        border-top: 1px solid rgba(199, 200, 201, 1)!important;
+        opacity: 1 !important;
+    }
+
     a {
         transition: 0.1s;
         text-decoration: none !important;
         box-shadow: inset 0 0 0 rgba(0, 0, 0, 0), 0 1px 0 rgba(0, 0, 0, 1);
     }
+
     a:hover {
-        color: blue !important;
-        box-shadow: inset 0 0 0 rgba(0, 0, 255, 0), 0 3px 0 rgba(0, 0, 255, 1);
+        box-shadow: inset 0 0 0 rgba(0, 0, 0, 0), 0 3px 0 rgba(0, 0, 0, 1);
     }
+
+    a.dark-a:hover {
+        box-shadow: inset 0 0 0 rgba(0, 0, 0, 0), 0 3px 0 #e6e6e6;
+    }
+
     ::selection {
         background-color: blue;
         color: white;
     }
+
     .ignoreStyle {
         box-shadow: none !important;
+    }
+
+    .dark {
+        background-color: #1a1a24;
+        color: #e6e6e6;
+    }
+
+    .dark-a {
+        color: #e6e6e6 !important;
+        box-shadow: inset 0 0 0 #e6e6e6, 0 1px 0 #e6e6e6;
+    }
+
+    #change {
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 3px;
+        border: solid 1px;
+        transition: 0.1s;
+    }
+
+    #change:hover {
+        transform: translateY(-3px);
+        transition: 0.1s;
     }
 </style>
