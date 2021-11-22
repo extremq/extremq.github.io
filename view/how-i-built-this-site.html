@@ -1,5 +1,6 @@
 <html lang="en">
-    <style>
+    <!-- This will be the style present in all pages -->
+<style>
     html { visibility:hidden; }
     
     body {
@@ -28,7 +29,7 @@
     }
 
     ::selection {
-        background-color: blue;
+        background-color: #888;
         color: white;
     }
 
@@ -53,6 +54,7 @@
         border-radius: 5px;
         padding: 3px;
         border: solid 1px;
+        font-size: small;
         transition: 0.1s;
     }
 
@@ -61,7 +63,8 @@
         transition: 0.1s;
     }
 </style>
-    <head>
+    <!-- Different from head.html because it generates embeds based on post. -->
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Extremq – How I built this site</title>
@@ -183,12 +186,13 @@ Extremq
             </main>
             <footer class="text-muted">
     <p>
-        Site created by Extremq, generated on November 22, 2021 at 09:41.
+        Site created by Extremq, generated on November 22, 2021 at 14:16.
     </p>
 </footer>
         </div>
     </body>
-    <script>
+    <!-- This will be the script available in all pages-->
+<script>
     theme = getCookie("theme")
     if (!theme) {
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -268,6 +272,7 @@ Extremq
         document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     }
 
+    // Trying to show the page only after we loaded the jquery.
     $(document).ready(function () {
         document.getElementsByTagName("html")[0].style.visibility = "visible";
     });

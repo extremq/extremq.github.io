@@ -1,5 +1,6 @@
 <html lang="en">
-    <style>
+    <!-- This will be the style present in all pages -->
+<style>
     html { visibility:hidden; }
     
     body {
@@ -28,7 +29,7 @@
     }
 
     ::selection {
-        background-color: blue;
+        background-color: #888;
         color: white;
     }
 
@@ -53,6 +54,7 @@
         border-radius: 5px;
         padding: 3px;
         border: solid 1px;
+        font-size: small;
         transition: 0.1s;
     }
 
@@ -116,23 +118,21 @@
 </header>
             <main>
                 <h1>Who I am</h1>
-<p class="fs-5 col-md-8">
+<p class="fs-5 col-md-8 mb-5">
     I go by my online alias "Extremq", and I am a computer science enthusiast who thrives by helping others and creating all kinds of things.
     <br>
     <br>
     You can also find my other presences online on <a href="https://github.com/extremq" class="text-dark" target="_blank">GitHub</a> and <a href="https://youtube.com/c/extremq" class="text-dark" target="_blank">YouTube</a>.
 </p>
  
-                <hr class="col-3 col-md-2 mb-5">
                 <h1>About this site</h1>
-<p class="fs-5 col-md-8">
+<p class="fs-5 col-md-8 mb-5">
     This site is built using my custom generator that you can find <a href="https://github.com/extremq/extremq.github.io" class="text-dark" target="_blank">here</a>.
     <br>
     <br>
     Feel free to have fun with it and modify anything you'd like, but please leave a link to my <a href="https://github.com/extremq" class="text-dark" target="_blank">GitHub</a> in the footer if you do so.
 </p>
  
-                <hr class="col-3 col-md-2 mb-5">
                 <h1>Articles</h1>
 <p class="fs-5 col-md-8">I love writing about ideas I've encountered or projects I developed. Take a look.</p>
 <p><a href="/view/modular-exponentiation.html" class="fs-5 text-dark">On calculating the modulo of exponentiated integers</a> <span class="fs-6 text-muted">- on 11 Nov 2021</span></p><p><a href="/view/divisors-come-in-pairs.html" class="fs-5 text-dark">Divisors always come in pairs</a> <span class="fs-6 text-muted">- on 7 Nov 2021</span></p><p><a href="/view/float-the-calculator.html" class="fs-5 text-dark">Float – a small calculator done in Python</a> <span class="fs-6 text-muted">- on 3 Nov 2021</span></p><p><a href="/view/how-i-built-this-site.html" class="fs-5 text-dark">How I built this site</a> <span class="fs-6 text-muted">- on 28 Oct 2021</span></p>
@@ -141,12 +141,13 @@
             </main>
             <footer class="text-muted">
     <p>
-        Site created by Extremq, generated on November 22, 2021 at 09:41.
+        Site created by Extremq, generated on November 22, 2021 at 14:16.
     </p>
 </footer>
         </div>
     </body>
-    <script>
+    <!-- This will be the script available in all pages-->
+<script>
     theme = getCookie("theme")
     if (!theme) {
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -226,6 +227,7 @@
         document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     }
 
+    // Trying to show the page only after we loaded the jquery.
     $(document).ready(function () {
         document.getElementsByTagName("html")[0].style.visibility = "visible";
     });
