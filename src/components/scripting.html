@@ -11,25 +11,23 @@
         }
     }
 
-    $(document).ready(function () {
-        if (theme == "dark") {
-            toDarkMode()
-        }
-        else {
+    if (theme == "dark") {
+        toDarkMode()
+    }
+    else {
+        toLightMode()
+    }
+
+    $("#change").on("click", function () {
+        if ($("body").hasClass("dark")) {
             toLightMode()
+            setCookie("theme", "light", 7)
+        } else {
+            toDarkMode()
+            setCookie("theme", "dark", 7)
         }
-
-        $("#change").on("click", function () {
-            if ($("body").hasClass("dark")) {
-                toLightMode()
-                setCookie("theme", "light", 7)
-            } else {
-                toDarkMode()
-                setCookie("theme", "dark", 7)
-            }
-        });
     });
-
+    
     function toDarkMode() {
             console.log("mata")
         $("body").addClass("dark");
