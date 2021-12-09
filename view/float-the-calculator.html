@@ -201,8 +201,16 @@ With newfound inspiration, some tkinter docs and some lo-fi <i>maths course</i> 
 The miracle of life, everybody. 
 <br>
 <br>
-So, my app is split into 3 main frames.
+<b>The architecture</b>
+<br>
+Float has a state in which it stores all inputs.
+This way, values are persistent no matter what you do.
+<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fextremq%2Ffloat%2Fblob%2Fa8b3fcbda8db115b783a9c4e6b47e8919c694e77%2Fsrc%2Fwindow_class.py%23L20-L34&style=vs&showFileMeta=on&fetchFromJsDelivr=on"></script>
+And the GUI is split into 3 main frames.
 <img src="https://i.imgur.com/Ade7rCd.png" class="mx-auto d-block m-4 shadow" style="border-radius: 6px;">
+Now, let's look at the UI components.
+<br>
+<br>
 <b>The buttons.</b>
 <br>
 It's straightforward, really. It's a frame consisting of two buttons.
@@ -224,13 +232,21 @@ Great job, Extremq.
 Moving on.
 <br>
 <br>
+<b>The generator.</b>
+<br>
 These are the generated entries. In this example, I wanted to input 100 values, but I didn't actually input 100 values. Sorry for lying.
 <img src="https://i.imgur.com/v6LmuWp.png" class="mx-auto d-block m-4 shadow" style="border-radius: 6px;">
-This one's a little bit taller. It knows whether I need to add or just to destroy entries and it also fills them with the cached values.
+The generator knows whether I need to add or just to destroy entries and it also fills them with the cached values.
 I bet you don't want to switch tools and lose your numbers. :(
 <script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fextremq%2Ffloat%2Fblob%2F420af8dbc2c1ffe2e92c6953d5ff1e0b9ae147c2%2Fsrc%2Fwindow_class.py%23L151-L193&style=vs&showFileMeta=on"></script>
+<b>Computing</b>
+<br>
+Computing the error is as easy as this:
+<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fextremq%2Ffloat%2Fblob%2Fa8b3fcbda8db115b783a9c4e6b47e8919c694e77%2Fsrc%2Fwindow_class.py%23L231-L269&style=vs&showFileMeta=on&fetchFromJsDelivr=on"></script>
+While computing linear regression is... still easy, I guess:
+<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fextremq%2Ffloat%2Fblob%2Fa8b3fcbda8db115b783a9c4e6b47e8919c694e77%2Fsrc%2Fwindow_class.py%23L270-L308&style=vs&showFileMeta=on&fetchFromJsDelivr=on"></script>
 All in all, I consider these to be the most important things to write about for now.
-If you want to check it through, you're free to do it.
+If you want to <a href="https://github.com/extremq/float/blob/master/src/window_class.py" class="text-dark" target="_blank">check it through</a>, you're free to do it.
 <br>
 <br>
 I strongly recommend trying to come with better solutions everytime you have the power and time to do it.
@@ -245,7 +261,7 @@ Extremq
             </main>
             <footer class="text-muted">
     <p>
-        Site created by Extremq, generated on November 28, 2021 at 14:50.
+        Site created by Extremq, generated on December 09, 2021 at 13:07.
     </p>
 </footer>
         </div>
