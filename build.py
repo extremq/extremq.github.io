@@ -26,6 +26,7 @@ class StaticGenerator:
         self.load_resources()
         self.build_posts()
         self.build_home()
+        self.build_projects()
 
     def load_env(self):
         print("Loading up environment variables:")
