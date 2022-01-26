@@ -27,7 +27,7 @@ Components also support arguments. To create such component, you will need to pr
 <a href="$$1$$">$$2$$</a>
 ```
 `home.html`
-```
+``` 
 My github is <mylink(https://github.com/extremq|Extremq)/>.
 ```
 The format is `<my` + Component name (name of file) + `(argument1|argument2|argument3...)` (optional) + `/>`.
