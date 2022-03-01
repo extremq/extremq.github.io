@@ -1,4 +1,0 @@
-On calculating the modulo of exponentiated integers
-11 Nov 2021
-1636625690
-This is how you can calculate the last digit of a number bigger than 13.
