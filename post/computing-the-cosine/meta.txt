@@ -1,4 +1,0 @@
-Accurately computing the cosine function
-18 Apr 2022
-1647461347
-How does he do it?!

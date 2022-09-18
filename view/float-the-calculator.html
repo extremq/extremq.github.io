@@ -63,27 +63,27 @@
         transition: 0.1s;
     }
 </style>
-    <head>
+    <!-- Different from head.html because it generates embeds based on post. -->
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Extremq</title>
+    <title>Extremq – Float – a small calculator done in Python</title>
      
-    <meta name="title" content="Extremq">
-    <meta name="description" content="Extremq's personal website.">
+    <meta name="title" content="Float – a small calculator done in Python">
+    <meta name="description" content="Making tools sure is fun, I'll show you mine.">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://extremq.github.io">
-    <meta property="og:title" content="Extremq">
-    <meta property="og:description" content="Extremq's personal website.">
+    <meta property="og:url" content="https://extremq.github.io/view/float-the-calculator.html">
+    <meta property="og:title" content="Float – a small calculator done in Python">
+    <meta property="og:description" content="Making tools sure is fun, I'll show you mine.">
     <meta property="og:image" content="https://i.imgur.com/PaWldXw.png" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://extremq.github.io">
-    <meta property="twitter:title" content="Extremq">
-    <meta property="twitter:description" content="Extremq's personal website.">
-
+    <meta property="twitter:url" content="https://extremq.github.io/view/float-the-calculator.html">
+    <meta property="twitter:title" content="Float – a small calculator done in Python">
+    <meta property="twitter:description" content="Making tools sure is fun, I'll show you mine.">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -91,7 +91,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
-
     <body class="d-block mx-auto" style="max-width: 1600px;">
         <div class="col-lg-8 mx-auto p-3 py-md-5">
             <header class="navbar d-flex align-items-center pb-3 mb-5" style="border-bottom: solid 1px rgba(199, 200, 201, 1) !important;">
@@ -117,32 +116,148 @@
     <span class="text-right" id="change">dark mode</span>
 </header>
             <main>
-                <h1>Who I am</h1>
-<p class="fs-5 col-md-8 mb-5">
-    I go by my online alias "Extremq", and I am a computer science enthusiast who thrives by helping others and creating all kinds of things.
-    <br>
-    <br>
-    You can also find my other presences online on <a href="https://github.com/extremq" class="text-dark" target="_blank">GitHub</a> and <a href="https://youtube.com/c/extremq" class="text-dark" target="_blank">YouTube</a>, or contact me on <a href="mailto:extremqcontact@gmail.com" class="text-dark" target="_blank">extremqcontact@gmail.com</a>.
-</p>
- 
-                <h1>My projects</h1>
-<p class="fs-5 col-md-8 mb-5">
-    Take a look at what I've done on the <a class="text-dark" href="https://extremq.github.io/projects.html">Projects</a> page.
-</p>
- 
+                <h1 class="mb-3">Float – a small calculator done in Python</h1>
+                <h5 class="card-subtitle mb-4 text-muted">3 Nov 2021</h5>
+                <div class="fs-5">
+                    Greetings. I hope your day is beautiful.
+Mine surely is.
+<br>
+<br>
+I'm here to tell you about my <i>newest invention yet</i>!
+Oh, you haven't heard about it!?
+Haha, don't worry.
+You will surely use it for the rest of your life.
+<br>
+<i>I promise</i>.
+<br>
+<br>
+...
+<br>
+<br>
+Alright. I'm just kidding.
+After all, I can do whatever I want on this page!
+Well, I can't do illegal stuff, can I? 
+Let me correct it, then – I can <i>almost</i> do whatever I want on my page!
+Sometimes I feel like joking around.
+I hope that isn't a problem, dear reader.
+<br>
+<br>
+Let's get to the point.
+<br>
+<hr class="col-3 col-md-2 mb-5">
+<h2>The calculator</h2>
+Meet <a href="https://github.com/extremq/float" class="text-dark" target="_blank">float</a> – a really specific calculator made using Python.
+<br>
+What does it do?
+Eh. That wasn't my point of interest when creating this tool, really. Let me explain.
+<br>
+<br>
+To begin with, I am in the first year of university. 
+For me, that means <b>physics</b> (notice the boldness – the reader should assume it's important).
+Well, every week we interpret experimental data and need to calculate two specific things: <b>error</b> and <b>linear regression</b>.
+<br>
+We were given a tool for that. It doesn't need to be fancy; after all, it should be able to do two simple tasks.
+<br>
+<br>
+I was thinking that... until I noticed some issues.
+<br>
+<br>
+Imagine if I were to ask you:
+<br>
+<br>
+<figure>
+    <blockquote class="blockquote">
+      <p>Hey, what's the average of \(0.45\) and \(0.55?\)</p>
+    </blockquote>
+    <figcaption class="blockquote-footer">
+      me, 2021
+    </figcaption>
+</figure>
+You would plop your trusty calculator and recite:
+<br>
+<br>
+<figure>
+    <blockquote class="blockquote">
+      <p>Oh, it's \(50\), of course!</p>
+    </blockquote>
+    <figcaption class="blockquote-footer">
+      you, 2021
+    </figcaption>
+</figure>
+<i>What?</i>
+<br>
+<br>
+Yeah. It couldn't correctly compute numbers under 1.
+<img src="https://i.imgur.com/ILoyh26.jpg" class="mx-auto d-block m-4 shadow" style="cursor: pointer; border-radius: 6px; max-width: 100%;" onclick="window.open('https://i.imgur.com/ILoyh26.jpg')">
+And I do mean the statement above fully – negative numbers weren't allowed, either. 
+God forbid you aren't positive in our university! (good joke, mate! you're a <i>natural</i>)
+<br>
+<br>
+Jokes aside, it had some other minor flaws, such as not being able to keep your values if you dared to add one more entry, or having an unintuitive entry selector.
+<br>
+I couldn't let my people down. 
+I couldn't watch them suffer any longer.
+With newfound inspiration, some tkinter docs and some lo-fi <i>maths course</i> beats to code to (sorry, professor), float was born.
+The miracle of life, everybody. 
+<br>
+<br>
+<b>The architecture</b>
+<br>
+Float has a state in which it stores all inputs.
+This way, values are persistent no matter what you do.
+<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fextremq%2Ffloat%2Fblob%2Fa8b3fcbda8db115b783a9c4e6b47e8919c694e77%2Fsrc%2Fwindow_class.py%23L20-L34&style=vs&showFileMeta=on&fetchFromJsDelivr=on"></script>
+And the GUI is split into 3 main frames.
+<img src="https://i.imgur.com/Ade7rCd.png" class="mx-auto d-block m-4 shadow" style="cursor: pointer; border-radius: 6px; max-width: 100%;" onclick="window.open('https://i.imgur.com/Ade7rCd.png')">
+Now, let's look at the UI components.
+<br>
+<br>
+<b>The buttons.</b>
+<br>
+It's straightforward, really. It's a frame consisting of two buttons.
+<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fextremq%2Ffloat%2Fblob%2F420af8dbc2c1ffe2e92c6953d5ff1e0b9ae147c2%2Fsrc%2Fwindow_class.py%23L70-L87&style=vs&showFileMeta=on"></script>
 
-                <h1>About this site</h1>
-<p class="fs-5 col-md-8 mb-5">
-    This site is built using my custom generator that you can find <a href="https://github.com/extremq/extremq.github.io" class="text-dark" target="_blank">here</a>.
-    <br>
-    <br>
-    Feel free to have fun with it and modify anything you'd like, but please leave a link to my <a href="https://github.com/extremq" class="text-dark" target="_blank">GitHub</a> in the footer if you do so.
-</p>
- 
-                <h1>Articles</h1>
-<p class="fs-5 col-md-8">I love writing about ideas I've encountered or projects I developed. Take a look.</p>
-<p><a href="/view/how-to-spot-fake-dangerous-links.html" class="fs-5 text-dark">How to spot fake or dangerous links</a> <span class="fs-6 text-muted">- on 18 Sep 2021</span></p><p><a href="/view/my-chess-pieces-and-gamedev.html" class="fs-5 text-dark">My gamedev journey and renders of chess pieces </a> <span class="fs-6 text-muted">- on 26 Jan 2022</span></p><p><a href="/view/divisors-come-in-pairs.html" class="fs-5 text-dark">Divisors always come in pairs</a> <span class="fs-6 text-muted">- on 7 Nov 2021</span></p><p><a href="/view/float-the-calculator.html" class="fs-5 text-dark">Float – a small calculator done in Python</a> <span class="fs-6 text-muted">- on 3 Nov 2021</span></p><p><a href="/view/how-i-built-this-site.html" class="fs-5 text-dark">How I built this site</a> <span class="fs-6 text-muted">- on 28 Oct 2021</span></p>
+<b>The tool.</b>
+<br>
+Entries work differently based on tool. I had to create two separate methods to work around with that.
+This here creates the buttons you see at the top.
+<br>
+<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fextremq%2Ffloat%2Fblob%2F420af8dbc2c1ffe2e92c6953d5ff1e0b9ae147c2%2Fsrc%2Fwindow_class.py%23L118-L149&style=vs&showFileMeta=on"></script>
 
+<b>The credits.</b>
+<br>
+How could I not give myself a pat on the back?
+Great job, Extremq.
+<br>
+<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fextremq%2Ffloat%2Fblob%2F420af8dbc2c1ffe2e92c6953d5ff1e0b9ae147c2%2Fsrc%2Fwindow_class.py%23L90-L105&style=vs&showFileMeta=on"></script>
+Moving on.
+<br>
+<br>
+<b>The generator.</b>
+<br>
+These are the generated entries. In this example, I wanted to input 100 values, but I didn't actually input 100 values. Sorry for lying.
+<img src="https://i.imgur.com/v6LmuWp.png" class="mx-auto d-block m-4 shadow" style="cursor: pointer; border-radius: 6px; max-width: 100%;" onclick="window.open('https://i.imgur.com/v6LmuWp.png')">
+The generator knows whether I need to add or just to destroy entries and it also fills them with the cached values.
+I bet you don't want to switch tools and lose your numbers. :(
+<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fextremq%2Ffloat%2Fblob%2F420af8dbc2c1ffe2e92c6953d5ff1e0b9ae147c2%2Fsrc%2Fwindow_class.py%23L151-L193&style=vs&showFileMeta=on"></script>
+<b>Computing</b>
+<br>
+Computing the error is as easy as this:
+<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fextremq%2Ffloat%2Fblob%2Fa8b3fcbda8db115b783a9c4e6b47e8919c694e77%2Fsrc%2Fwindow_class.py%23L231-L269&style=vs&showFileMeta=on&fetchFromJsDelivr=on"></script>
+While computing linear regression is... still easy, I guess:
+<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fextremq%2Ffloat%2Fblob%2Fa8b3fcbda8db115b783a9c4e6b47e8919c694e77%2Fsrc%2Fwindow_class.py%23L270-L308&style=vs&showFileMeta=on&fetchFromJsDelivr=on"></script>
+All in all, I consider these to be the most important things to write about for now.
+If you want to <a href="https://github.com/extremq/float/blob/master/src/window_class.py" class="text-dark" target="_blank">check it through</a>, you're free to do it.
+<br>
+<br>
+I strongly recommend trying to come with better solutions everytime you have the power and time to do it.
+This is how our world moves on and evolves. 
+It's been a pleasure. 
+Continue having a beautiful day, dear reader.
+<br>
+<br>
+Extremq
+                </div>
+                <hr class="col-3 col-md-2 mb-5">
             </main>
             <footer class="text-muted">
     <p>
@@ -254,4 +369,4 @@
     });
 
 </script>
-</html>
+<html>

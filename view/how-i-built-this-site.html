@@ -63,27 +63,27 @@
         transition: 0.1s;
     }
 </style>
-    <head>
+    <!-- Different from head.html because it generates embeds based on post. -->
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Extremq</title>
+    <title>Extremq – How I built this site</title>
      
-    <meta name="title" content="Extremq">
-    <meta name="description" content="Extremq's personal website.">
+    <meta name="title" content="How I built this site">
+    <meta name="description" content="I was once like you, a human without a site. But now, that is no more.">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://extremq.github.io">
-    <meta property="og:title" content="Extremq">
-    <meta property="og:description" content="Extremq's personal website.">
+    <meta property="og:url" content="https://extremq.github.io/view/how-i-built-this-site.html">
+    <meta property="og:title" content="How I built this site">
+    <meta property="og:description" content="I was once like you, a human without a site. But now, that is no more.">
     <meta property="og:image" content="https://i.imgur.com/PaWldXw.png" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://extremq.github.io">
-    <meta property="twitter:title" content="Extremq">
-    <meta property="twitter:description" content="Extremq's personal website.">
-
+    <meta property="twitter:url" content="https://extremq.github.io/view/how-i-built-this-site.html">
+    <meta property="twitter:title" content="How I built this site">
+    <meta property="twitter:description" content="I was once like you, a human without a site. But now, that is no more.">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -91,7 +91,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
-
     <body class="d-block mx-auto" style="max-width: 1600px;">
         <div class="col-lg-8 mx-auto p-3 py-md-5">
             <header class="navbar d-flex align-items-center pb-3 mb-5" style="border-bottom: solid 1px rgba(199, 200, 201, 1) !important;">
@@ -117,32 +116,74 @@
     <span class="text-right" id="change">dark mode</span>
 </header>
             <main>
-                <h1>Who I am</h1>
-<p class="fs-5 col-md-8 mb-5">
-    I go by my online alias "Extremq", and I am a computer science enthusiast who thrives by helping others and creating all kinds of things.
-    <br>
-    <br>
-    You can also find my other presences online on <a href="https://github.com/extremq" class="text-dark" target="_blank">GitHub</a> and <a href="https://youtube.com/c/extremq" class="text-dark" target="_blank">YouTube</a>, or contact me on <a href="mailto:extremqcontact@gmail.com" class="text-dark" target="_blank">extremqcontact@gmail.com</a>.
-</p>
- 
-                <h1>My projects</h1>
-<p class="fs-5 col-md-8 mb-5">
-    Take a look at what I've done on the <a class="text-dark" href="https://extremq.github.io/projects.html">Projects</a> page.
-</p>
- 
-
-                <h1>About this site</h1>
-<p class="fs-5 col-md-8 mb-5">
-    This site is built using my custom generator that you can find <a href="https://github.com/extremq/extremq.github.io" class="text-dark" target="_blank">here</a>.
-    <br>
-    <br>
-    Feel free to have fun with it and modify anything you'd like, but please leave a link to my <a href="https://github.com/extremq" class="text-dark" target="_blank">GitHub</a> in the footer if you do so.
-</p>
- 
-                <h1>Articles</h1>
-<p class="fs-5 col-md-8">I love writing about ideas I've encountered or projects I developed. Take a look.</p>
-<p><a href="/view/how-to-spot-fake-dangerous-links.html" class="fs-5 text-dark">How to spot fake or dangerous links</a> <span class="fs-6 text-muted">- on 18 Sep 2021</span></p><p><a href="/view/my-chess-pieces-and-gamedev.html" class="fs-5 text-dark">My gamedev journey and renders of chess pieces </a> <span class="fs-6 text-muted">- on 26 Jan 2022</span></p><p><a href="/view/divisors-come-in-pairs.html" class="fs-5 text-dark">Divisors always come in pairs</a> <span class="fs-6 text-muted">- on 7 Nov 2021</span></p><p><a href="/view/float-the-calculator.html" class="fs-5 text-dark">Float – a small calculator done in Python</a> <span class="fs-6 text-muted">- on 3 Nov 2021</span></p><p><a href="/view/how-i-built-this-site.html" class="fs-5 text-dark">How I built this site</a> <span class="fs-6 text-muted">- on 28 Oct 2021</span></p>
-
+                <h1 class="mb-3">How I built this site</h1>
+                <h5 class="card-subtitle mb-4 text-muted">28 Oct 2021</h5>
+                <div class="fs-5">
+                    Hello!
+<br><br>
+This has been a really exciting thing to work on and I'm sure I will put it to use.
+Now, you might be asking why did I create this whole <i>thing</i> in the first place, considering how many other site-building tools are there?
+Well, it's simple:
+<br><br>
+<b>I wanted to learn!</b>
+<br><br>
+It's much more fun to learn and to be able to tweak things however I like.
+I could've built a dynamic website, but github only supports static stuff.
+Believe me, it's exciting to run <kbd>py build.py</kbd> and see all the lines flow down through the console.
+<br><br>
+<b>Let's get to technical stuff, shall we?</b>
+<br>
+Glad you asked.
+<br><br>
+Just so we are on the same line, you can also take a look at the source code <a href="https://github.com/extremq/extremq.github.io" class="text-dark" target="_blank">here</a>.
+Moving on, I had <i>three things</i> in mind when planning the structure:
+<br><br>
+<ul class="list-group">
+    <li class="list-group-item">Everything has to be modular.</li>
+    <li class="list-group-item">It should be fast and efficient for creating articles.</li>
+    <li class="list-group-item">Every article must be tweakable up to source code level.</li>
+</ul>
+<br>
+Let's start with the first requirement:
+<br><br>
+<b>Everything has to be modular.</b>
+<br>
+I do not want to be forced to edit whole html files or to update the same piece of code in multiple html files.
+This is time <i>lost</i> that could've went into writing or, really, doing anything else.
+We don't like wasting time here.
+<br>
+What I did in order to achieve that was to basically have two main types of source files: <kbd>templates</kbd> and <kbd>components</kbd><div class=""></div>
+I simply include snippets of html inside these such files and, within the <kbd>build.py</kbd> file, I replace tags with their content (recursion supported!).
+<br><br>
+The tags are formatted like this:
+<br>
+<code>&lt;myFileName(argument1|argument2|...)/&gt;</code>, where FileName is the component's name, extension removed. 
+It also supports arguments, such as links: <code>&lt;mylink(https://github.com|Github)/&gt;</code> renders to <a href="https://github.com" class="text-dark" target="_blank">Github</a>.
+<br><br>
+<b>It should be fast and efficient for creating articles.</b>
+<br>
+I made it so everytime I want to write a new article, I instantiate a folder with <kbd>body.html</kbd> and <kbd>meta.txt</kbd> in them.
+They are the basic requirements for an article to exist. From there, I am free to build the site to check out how the article looks and whatnot.
+<br>
+I do have some improvements I will eventually implement, one of them being the ability to generate the edited posts instead of the whole deal.
+<br><br>
+<b>Every article must be tweakable up to source code level.</b>
+<br>
+I mean... I basically <i>have</i> to write everything at source code level.
+Every article is typed using basic html and will use javascript or css when needed.
+I like it this way because it lets me do pretty much anything I will want to do.
+<br>
+Want a game? Want graphs? Want tools?
+<br>
+Of course I do!
+<br><br>
+Concluding this, I personally think this is suffice for what I want to do, for now.
+Either way, it was a pleasure writing my first article here.
+I will return with new things soon.
+<br><br>
+Extremq
+                </div>
+                <hr class="col-3 col-md-2 mb-5">
             </main>
             <footer class="text-muted">
     <p>
@@ -254,4 +295,4 @@
     });
 
 </script>
-</html>
+<html>
