@@ -115,11 +115,37 @@
             </main>
             <footer class="text-muted">
     <p>
-        Site created by Extremq, generated on October 08, 2022 at 10:48.
+        Site created by Extremq, generated on October 08, 2022 at 15:31.
     </p>
 </footer>
         </div>
     </body>
     <!-- This will be the script available in all pages-->
-<!--NO SCRIPT :D-->
+<!--NO SCRIPT :D NVM-->
+<script>
+function waitForElm(selector) {
+    return new Promise(resolve => {
+        if (document.querySelector(selector)) {
+            return resolve(document.querySelector(selector));
+        }
+
+        const observer = new MutationObserver(mutations => {
+            if (document.querySelector(selector)) {
+                resolve(document.querySelector(selector));
+                observer.disconnect();
+            }
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    });
+}
+
+waitForElm('.giscus').then((elm) => {
+    console.log(elm)
+    elm.style.width = "95%"
+});
+</script>
 </html>
