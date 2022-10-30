@@ -26,7 +26,6 @@ class StaticGenerator:
         self.load_resources()
         self.build_posts()
         self.build_home()
-        self.build_projects()
 
     def load_env(self):
         print("Loading up environment variables:")
@@ -226,43 +225,6 @@ class StaticGenerator:
                 file.write(output)
 
         print("Built home page.")
-
-    def build_projects(self):
-        print("Building projects page.")
-
-        output = self.templates["projects"]
-        output = self.replace_global_vars(output)
-        while tags := re.findall("<my([a-z]+)(\([^>]+\))?\/>", output):
-            for tag in tags:
-                html_tag = "<my" + tag[0] + tag[1] + "/>"
-                stripped_tag = tag[0]
-
-                arguments = tag[1].removeprefix("(")
-                arguments = arguments.removesuffix(")")
-
-                if arguments:
-                    arguments = arguments.split("|")
-
-                if stripped_tag == "script" or stripped_tag == "style":
-                    output = output.replace(html_tag, "")
-                else:
-                    component_content = self.components[stripped_tag]
-
-                    # Replace arguments.
-                    i = 1
-                    for arg in arguments:
-                        component_content = component_content.replace(f"${i}$", arg)
-                        i += 1
-                    
-                    output = output.replace(html_tag, component_content)
-        
-        if os.path.isfile(f"{self.root}/projects.html"):
-            os.remove(f"{self.root}/projects.html")
-        
-        with open(f"{self.root}/projects.html", "w") as file:
-                file.write(output)
-
-        print("Built projects page.")
 
 
 if __name__ == "__main__":
