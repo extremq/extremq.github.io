@@ -1,4 +1,5 @@
 # Status
+This has been retired. Please check out my new blog [here](https://github.com/extremq/blog).
 ![https://github.com/extremq/extremq.github.io/actions/workflows/generate-site.yaml](https://github.com/extremq/extremq.github.io/workflows/generate-site/badge.svg)
 # Introduction
 This is my personal website in which I will be posting different articles about various topics I like most. 
